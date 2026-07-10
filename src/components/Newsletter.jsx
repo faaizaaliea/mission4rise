@@ -1,3 +1,5 @@
+import "../css/Newsletter.css";
+
 function Newsletter() {
   return (
     <section className="newsletter container">

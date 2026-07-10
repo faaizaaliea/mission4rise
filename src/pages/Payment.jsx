@@ -1,9 +1,10 @@
-import "../css/style.css";
+import "../css/Payment.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Stepper from "../components/Stepper";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 function Payment() {
   const [open, setOpen] = useState("bank");
   const navigate = useNavigate();
@@ -233,7 +234,7 @@ function Payment() {
           {/* RIGHT */}
           <aside className="course-sidebar">
             <div className="buy-card">
-              <img src="/1.jpg" alt="Course" className="course-image" />
+              <img src="/1.jpg" alt="Course" className="pay-course-image" />
               <h3>
                 Gapai Karier Impianmu sebagai Seorang UI/UX Designer & Product
                 Manager.
@@ -487,7 +488,9 @@ function Payment() {
         </div>
       </main>
 
-      <Footer />
+      <div className="payment-mobile-footer">
+        <Footer />
+      </div>
     </>
   );
 }

@@ -1,0 +1,91 @@
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.step span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #bdbdbd;
+  white-space: nowrap;
+}
+
+.line {
+  width: 80px;
+  height: 2px;
+  background: #bdbdbd;
+  margin: 0 10px;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border: 3px solid #bdbdbd;
+  border-radius: 50%;
+  background: #fff;
+  position: relative;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -12px;
+}
+
+.step.active span {
+  color: #333;
+}
+
+.step.active .circle {
+  border-color: #3ecf4c;
+  margin-left: -12px;
+}
+
+.circle::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #bdbdbd;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.step.active .circle::after {
+  background: #3ecf4c;
+}
+
+.step.done span {
+  color: #333;
+}
+
+.step.done .circle {
+  background: #3ecf4c;
+  border: none;
+}
+
+.step.done .circle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  transform: translate(-50%, -50%);
+  background: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 6L9 17l-5-5' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.line.done {
+  background: #3ecf4c;
+}

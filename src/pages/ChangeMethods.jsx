@@ -1,9 +1,10 @@
-import "../css/style.css";
+import "../css/Payment.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useState } from "react";
 import Stepper from "../components/Stepper";
 import { useNavigate } from "react-router-dom";
+
 function PaymentMethods() {
   const [open, setOpen] = useState("bank");
   const [selectedPayment, setSelectedPayment] = useState(null);
@@ -520,7 +521,9 @@ function PaymentMethods() {
         </div>
       </main>
 
-      <Footer />
+      <div className="payment-mobile-footer">
+        <Footer />
+      </div>
     </>
   );
 }

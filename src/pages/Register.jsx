@@ -1,6 +1,7 @@
 import AuthHeader from "../components/AuthHeader";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "../css/Login.css";
 
 function Register() {
   const SortChevronIcon = () => (

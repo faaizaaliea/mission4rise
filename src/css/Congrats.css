@@ -1,0 +1,249 @@
+.congrats-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+  background: #fff;
+}
+
+.congrats-content {
+  flex: 1;
+  min-width: 0;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.congrats-banner {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.congrats-body {
+  padding: 40px 48px;
+  display: block;
+}
+
+.congrats-body h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #222325;
+}
+
+.congrats-date {
+  margin: 10px 0 24px;
+  font-size: 14px;
+  color: #8a8a8a;
+}
+
+.score-table {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid #ececec;
+  margin-bottom: 32px;
+  overflow: hidden;
+}
+
+.score-box {
+  min-height: 98px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid #ececec;
+  background: #fff;
+}
+
+.score-box:last-child {
+  border-right: none;
+}
+
+.score-box span {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.score-box strong {
+  font-size: 18px;
+  font-weight: 700;
+  color: #222325;
+}
+
+.score-box.score-green {
+  background: #38d189;
+}
+
+.score-box.score-green span,
+.score-box.score-green strong {
+  color: white;
+}
+
+.correct-score,
+.wrong-score {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.correct-score img,
+.wrong-score img {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.congrats-body h2 {
+  margin: 0 0 16px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #222325;
+}
+
+.congrats-text {
+  margin: 0 0 12px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #6f6d69;
+}
+
+.congrats-text:last-child {
+  margin-bottom: 0;
+}
+.mobile-course-nav {
+  display: none;
+}
+@media (max-width: 768px) {
+  .video-navbar {
+    display: none;
+  }
+
+  .bottom-nav {
+    display: none !important;
+  }
+
+  .congrats-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .congrats-content {
+    width: 100%;
+    order: 1;
+  }
+
+  .congrats-banner {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 0;
+  }
+
+  .congrats-body {
+    padding: 24px 20px 32px;
+  }
+
+  .congrats-body h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .congrats-date {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .congrats-body h2 {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .course-sidebar,
+  .rules-sidebar {
+    width: 100%;
+    min-width: 0;
+    position: static;
+    top: auto;
+    height: auto;
+    max-height: none;
+    overflow: visible;
+    border-left: none;
+    order: 2;
+  }
+
+  .module-heading {
+    display: block;
+    margin: 0;
+    padding: 20px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #222;
+    border-bottom: 1px solid #e7e7e7;
+  }
+
+  .module {
+    margin: 0;
+    padding: 20px;
+  }
+
+  .module-header {
+    padding: 12px 0;
+    margin: 0;
+    font-size: 18px;
+  }
+
+  .module-content {
+    margin-top: 12px;
+  }
+
+  .lesson {
+    padding: 16px;
+    margin-bottom: 14px;
+    justify-content: flex-start;
+  }
+
+  .lesson h5 {
+    font-size: 17px;
+  }
+
+  .lesson span {
+    font-size: 14px;
+  }
+
+  .lesson.locked .lesson-icon {
+    filter: grayscale(100%);
+    opacity: 0.6;
+  }
+
+  .lesson.done .lesson-icon,
+  .lesson.active .lesson-icon {
+    filter: none;
+    opacity: 1;
+  }
+
+  .lesson.done .lesson-info h5,
+  .lesson.done .lesson-info span,
+  .lesson.locked .lesson-info h5,
+  .lesson.locked .lesson-info span {
+    color: var(--muted);
+  }
+
+  .lesson.active h5 {
+    color: var(--text);
+  }
+
+  .lesson.active span,
+  .lesson.done span {
+    color: var(--muted);
+  }
+
+  .review-btn {
+    width: calc(100% - 40px);
+    margin: 16px 20px 20px;
+    height: 56px;
+    font-size: 18px;
+  }
+}

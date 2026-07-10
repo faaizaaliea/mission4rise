@@ -2,8 +2,14 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useState } from "react";
 import { courses } from "../data/courses";
+import { Link } from "react-router-dom";
+
+import CourseCardHome from "../components/CourseCardHome";
 import CourseCard from "../components/CourseCard";
+
 import { useNavigate } from "react-router-dom";
+import "../css/CourseDetail.css";
+
 export default function CourseDetail() {
   const navigate = useNavigate();
   const [open, setOpen] = useState(0);
@@ -76,12 +82,10 @@ export default function CourseDetail() {
       <Navbar />
       <div className="course-detail">
         <div className="course-breadcrumb">
-          <span>Beranda</span>
+          <Link to="/home">Beranda</Link>
           <span className="separator">/</span>
-
           <span>Desain</span>
           <span className="separator">/</span>
-
           <span className="current">
             Gapai Karier Impianmu sebagai Seorang UI/UX Designer & Product
             Manager.
@@ -110,7 +114,7 @@ export default function CourseDetail() {
         </section>
 
         <div className="course-layout">
-          {/* LEFT */}
+          {/* Left */}
           <div className="course-main">
             {/* Deskripsi */}
             <section className="card">
@@ -207,11 +211,11 @@ export default function CourseDetail() {
                       {open === index && (
                         <div className="accordion-content">
                           {section.lessons.map((lesson, i) => (
-                            <div className="lesson" key={i}>
+                            <div className="courselesson" key={i}>
                               <span>{lesson}</span>
 
-                              <div className="lesson-info">
-                                <span className="lesson-icon">
+                              <div className="courselesson-info">
+                                <span className="courselesson-icon">
                                   <svg
                                     width="24"
                                     height="24"
@@ -240,7 +244,7 @@ export default function CourseDetail() {
 
                                 <span>Video</span>
 
-                                <span className="lesson-icon">
+                                <span className="courselesson-icon">
                                   <span className="clock-icon">
                                     <svg
                                       width="24"
@@ -281,7 +285,7 @@ export default function CourseDetail() {
                 {[1, 2].map((item) => (
                   <div className="review-card" key={item}>
                     <div className="review-top">
-                      <img src="/public/ava1.jpg" alt="" />
+                      <img src="/ava1.jpg" alt="" />
 
                       <div>
                         <h4>Gregorius Edrik Lawanto</h4>
@@ -305,7 +309,7 @@ export default function CourseDetail() {
             </section>
           </div>
 
-          {/* RIGHT */}
+          {/* Right */}
           <aside className="course-sidebar">
             <div className="buy-card">
               <h3>

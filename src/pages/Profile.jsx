@@ -1,10 +1,10 @@
-import "../css/style.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Stepper from "../components/Stepper";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
+import "../css/Profile.css";
 export default function Profile() {
   const SortChevronIcon = () => (
     <svg
@@ -95,38 +95,41 @@ export default function Profile() {
   return (
     <>
       <Navbar />
-      <div className="order-page">
-        <div className="order-container">
+      <div className="xxorder-order-page">
+        <div className="xxorder-order-container">
           {/* Sidebar */}
-          <aside className="order-sidebar">
+          <aside className="xxorder-order-sidebar">
             <h2>Ubah Profil</h2>
 
             <p>Ubah data diri Anda</p>
 
-            <div className="sidebar-menu">
-              <Link to="/profile" className="sidebar-item active">
+            <div className="xxorder-sidebar-menu">
+              <Link
+                to="/profile"
+                className="xxorder-sidebar-item xxorder-active"
+              >
                 <img
                   src="/profilaktif.png"
                   alt="profile"
-                  className="icon-sidebar-menu"
+                  className="xxorder-icon-sidebar-menu"
                 />
                 Profil Saya
               </Link>
 
-              <Link to="/my-class" className="sidebar-item">
+              <Link to="/my-class" className="xxorder-sidebar-item">
                 <img
                   src="/kelasnon.png"
                   alt="class"
-                  className="icon-sidebar-menu"
+                  className="xxorder-icon-sidebar-menu"
                 />
                 Kelas Saya
               </Link>
 
-              <Link to="/order" className="sidebar-item">
+              <Link to="/order" className="xxorder-sidebar-item">
                 <img
                   src="/pesanannon.png"
                   alt="order"
-                  className="icon-sidebar-menu"
+                  className="xxorder-icon-sidebar-menu"
                 />
                 Pesanan Saya
               </Link>

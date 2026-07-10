@@ -1,0 +1,207 @@
+.sertifikat-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #fdfaf2;
+}
+
+.sertifikat-main {
+  flex: 1;
+  padding: 32px 0 48px;
+}
+
+.sertifikat-container {
+  width: min(1100px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.course-breadcrumb {
+  margin-bottom: 20px;
+}
+
+.sertifikat-card {
+  background: #fff;
+  border: 1px solid #eceae3;
+  border-radius: 12px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.sertifikat-preview {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 14px;
+  align-items: stretch;
+  margin-bottom: 16px;
+}
+
+.sertifikat-side-panel {
+  background: #f2fff1;
+  border: 1px solid #d9f5d7;
+  border-radius: 8px;
+  min-height: 190px;
+}
+
+.sertifikat-image-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.sertifikat-image {
+  width: 100%;
+  max-width: 520px;
+  display: block;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.sertifikat-course-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.sertifikat-course-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.sertifikat-course-left h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 700;
+  color: #222325;
+}
+
+.sertifikat-course-left p {
+  margin: 0 0 14px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #6f7072;
+}
+.sertifikat-course-right {
+  flex-shrink: 0;
+  transform: translateY(-90px);
+}
+
+.sertifikat-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sertifikat-rating .stars {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #f9cc00;
+  margin-top: 5px;
+  margin-left: -1px;
+}
+
+.sertifikat-rating .rating-score {
+  font-size: 13px;
+  color: #6f7072;
+}
+
+.sertifikat-course-right {
+  flex-shrink: 0;
+}
+
+.download-sertifikat-btn {
+  height: 42px;
+  padding: 0 18px;
+  border: 1px solid #3ecf4c;
+  border-radius: 8px;
+  background: #fff;
+  color: #3ecf4c;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.download-sertifikat-btn:hover {
+  background: #f3fff4;
+}
+
+@media (max-width: 768px) {
+  .sertifikat-main {
+    padding: 20px 0 32px;
+  }
+
+  .sertifikat-container {
+    width: min(100%, calc(100% - 24px));
+  }
+
+  .sertifikat-card {
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .sertifikat-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .sertifikat-side-panel {
+    display: block;
+    width: 100%;
+    min-height: 18px;
+    height: 18px;
+    background: #f2fff1;
+    border: none;
+    border-radius: 4px;
+  }
+
+  .sertifikat-image-wrap {
+    width: 100%;
+  }
+
+  .sertifikat-image {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    border-radius: 8px;
+  }
+
+  .sertifikat-course-info {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .sertifikat-course-left h2 {
+    font-size: 16px;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+
+  .sertifikat-course-left p {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .sertifikat-course-right {
+    width: 100%;
+    margin-bottom: 0;
+    transform: none;
+  }
+
+  .download-sertifikat-btn {
+    width: 100%;
+    justify-content: center;
+    height: 40px;
+    font-size: 13px;
+    border-radius: 8px;
+  }
+}

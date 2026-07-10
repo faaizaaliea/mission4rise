@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "../css/style.css";
+import "../css/Order.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Stepper from "../components/Stepper";
@@ -100,7 +100,7 @@ export default function Order() {
   ];
   const [currentPage, setCurrentPage] = useState(1);
 
-  const ordersPerPage = 3; // sesuaikan jumlah order per halaman
+  const ordersPerPage = 3;
 
   const indexOfLastOrder = currentPage * ordersPerPage;
   const indexOfFirstOrder = indexOfLastOrder - ordersPerPage;
@@ -111,39 +111,39 @@ export default function Order() {
   return (
     <>
       <Navbar />
-      <div className="order-page">
-        <div className="order-container">
+      <div className="xxorder-order-page">
+        <div className="xxorder-order-container">
           {/* Sidebar */}
 
-          <aside className="order-sidebar">
+          <aside className="xxorder-order-sidebar">
             <h2>Daftar Pesanan</h2>
 
             <p>Informasi terperinci mengenai pembelian</p>
 
-            <div className="sidebar-menu">
-              <Link to="/profile" className="sidebar-item">
+            <div className="xxorder-sidebar-menu">
+              <Link to="/profile" className="xxorder-sidebar-item">
                 <img
                   src="/profilnon.png"
                   alt="profile"
-                  className="icon-sidebar-menu"
+                  className="xxorder-icon-sidebar-menu"
                 />
                 Profil Saya
               </Link>
 
-              <Link to="/my-class" className="sidebar-item">
+              <Link to="/my-class" className="xxorder-sidebar-item">
                 <img
                   src="/kelasnon.png"
                   alt="class"
-                  className="icon-sidebar-menu"
+                  className="xxorder-icon-sidebar-menu"
                 />
                 Kelas Saya
               </Link>
 
-              <Link to="/order" className="sidebar-item active">
+              <Link to="/order" className="xxorder-sidebar-item xxorder-active">
                 <img
                   src="/pesananaktif.png"
                   alt="order"
-                  className="icon-sidebar-menu"
+                  className="xxorder-icon-sidebar-menu"
                 />
                 Pesanan Saya
               </Link>
@@ -152,20 +152,20 @@ export default function Order() {
 
           {/* Content */}
 
-          <section className="order-content">
-            <div className="order-card">
+          <section className="xxorder-order-content">
+            <div className="xxorder-order-card">
               {/* Top */}
 
-              <div className="order-top">
-                <div className="order-tabs">
-                  <button className="active">Semua Pesanan</button>
+              <div className="xxorder-order-top">
+                <div className="xxorder-order-tabs">
+                  <button className="xxorder-active">Semua Pesanan</button>
                   <button>Menunggu</button>
                   <button>Berhasil</button>
                   <button>Gagal</button>
                 </div>
 
-                <div className="order-filter">
-                  <div className="search-box">
+                <div className="xxorder-order-filter">
+                  <div className="xxorder-search-box">
                     <input type="text" placeholder="Cari Kelas" />
 
                     <button>
@@ -185,26 +185,28 @@ export default function Order() {
                     </button>
                   </div>
 
-                  <div className="sort-wrapper" ref={sortRef}>
+                  <div className="xxorder-sort-wrapper" ref={sortRef}>
                     <button
                       type="button"
-                      className="sort-button"
+                      className="xxorder-sort-button"
                       onClick={() => setIsOpen(!isOpen)}
                     >
                       <span>{selectedSort}</span>
 
-                      <span className={`sort-icon ${isOpen ? "rotate" : ""}`}>
+                      <span
+                        className={`xxorder-sort-icon ${isOpen ? "xxorder-rotate" : ""}`}
+                      >
                         <SortChevronIcon />
                       </span>
                     </button>
 
                     {isOpen && (
-                      <div className="sort-menu">
+                      <div className="xxorder-sort-menu">
                         {sortOptions.map((option) => (
                           <div
                             key={option}
-                            className={`sort-item ${
-                              selectedSort === option ? "active" : ""
+                            className={`xxorder-sort-item ${
+                              selectedSort === option ? "xxorder-active" : ""
                             }`}
                             onClick={() => handleSelect(option)}
                           >
@@ -219,30 +221,34 @@ export default function Order() {
 
               {/* Order List */}
 
-              <div className="order-list">
+              <div className="xxorder-order-list">
                 {currentOrders.map((order) => (
-                  <div className="order-item" key={order.id}>
-                    <div className="order-header">
-                      <div className="invoice-info">
-                        <span className="invoice-label">No. Invoice:</span>
+                  <div className="xxorder-order-item" key={order.id}>
+                    <div className="xxorder-order-header">
+                      <div className="xxorder-invoice-info">
+                        <span className="xxorder-invoice-label">
+                          No. Invoice:
+                        </span>
 
                         <a href="#">{order.invoice}</a>
 
-                        <span className="payment-date">
-                          <span className="payment-label">
+                        <span className="xxorder-payment-date">
+                          <span className="xxorder-payment-label">
                             Waktu Pembayaran:
                           </span>{" "}
                           {order.date}
                         </span>
                       </div>
 
-                      <span className={`status ${order.statusClass}`}>
+                      <span
+                        className={`xxorder-status xxorder-status-${order.statusClass}`}
+                      >
                         {order.status}
                       </span>
                     </div>
 
-                    <div className="order-body">
-                      <div className="course-info">
+                    <div className="xxorder-order-body">
+                      <div className="xxorder-course-info">
                         <img src={order.image} alt={order.title} />
 
                         <div>
@@ -250,18 +256,18 @@ export default function Order() {
                         </div>
                       </div>
 
-                      <div className="price-info">
-                        <div className="price-info-content">
+                      <div className="xxorder-price-info">
+                        <div className="xxorder-price-info-content">
                           <span>Harga</span>
                           <strong>{order.price}</strong>
                         </div>
                       </div>
                     </div>
 
-                    <div className="order-footer">
+                    <div className="xxorder-order-footer">
                       <span>Total Pembayaran</span>
 
-                      <div className="total-price">
+                      <div className="xxorder-total-price">
                         <strong>{order.total}</strong>
                       </div>
                     </div>

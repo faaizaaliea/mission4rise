@@ -1,9 +1,10 @@
-import "../css/style.css";
+import "../css/Payment.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Stepper from "../components/Stepper";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 export default function FinishPayment() {
   return (
     <>

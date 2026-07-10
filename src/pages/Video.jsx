@@ -1,9 +1,27 @@
-import "../css/style.css";
 import Navbar from "../components/Navbar";
-import Stepper from "../components/Stepper";
+import RulesSidebar from "../components/RulesSidebar";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import "../css/Video.css";
+
+function ChevronDownIcon() {
+  return (
+    <svg
+      width="12"
+      height="8"
+      viewBox="0 0 12 8"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M10.59 0.59L6 5.17L1.41 0.59L0 2L6 8L12 2L10.59 0.59Z"
+        fill="#3ECF4C"
+      />
+    </svg>
+  );
+}
+
 function LessonIcon({ type, status }) {
   if (
     status === "active" &&
@@ -117,11 +135,6 @@ export default function Video() {
       ],
     },
   ];
-  const currentLessons =
-    modules.find((m) => m.id === currentModule)?.lessons || [];
-  const lesson = currentLessons[activeLesson] ?? {
-    title: currentPage?.title ?? "",
-  };
   const ruleType = state?.ruleType;
   const navigate = useNavigate();
 
@@ -146,7 +159,14 @@ export default function Video() {
         },
       });
     } else if (item.type === "summary") {
-      navigate("/summary");
+      navigate("/summary", {
+        state: {
+          course,
+          index,
+          moduleId,
+          activeLesson: lessonIndex,
+        },
+      });
     } else if (item.type === "quiz") {
       navigate("/rules", {
         state: {
@@ -184,21 +204,6 @@ export default function Video() {
 
   const course = state?.course;
   const index = state?.index ?? 0;
-  const ChevronDownIcon = () => (
-    <svg
-      width="12"
-      height="8"
-      viewBox="0 0 12 8"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M10.59 0.59L6 5.17L1.41 0.59L0 2L6 8L12 2L10.59 0.59Z"
-        fill="#3ECF4C"
-      />
-    </svg>
-  );
-
   const getLessonStatus = (item, lessonIndex, moduleId) => {
     const lessons = modules.find((m) => m.id === moduleId)?.lessons || [];
 
@@ -206,18 +211,11 @@ export default function Video() {
     const summaryIndex = lessons.findIndex((l) => l.type === "summary");
     const quizIndex = lessons.findIndex((l) => l.type === "quiz");
     const finalIndex = lessons.findIndex((l) => l.type === "final");
-
-    // ===================
-    // RULES PRETEST
-    // ===================
     if (ruleType === "pretest" && moduleId === currentModule) {
       if (lessonIndex === pretestIndex) return "active";
       return "locked";
     }
 
-    // ===================
-    // RULES QUIZ
-    // ===================
     if (ruleType === "quiz") {
       if (moduleId < currentModule) return "done";
       if (moduleId > currentModule) return "locked";
@@ -227,9 +225,6 @@ export default function Video() {
       return "locked";
     }
 
-    // ===================
-    // RULES FINAL
-    // ===================
     if (ruleType === "final") {
       if (moduleId < currentModule) return "done";
       if (moduleId > currentModule) return "locked";
@@ -238,16 +233,9 @@ export default function Video() {
       if (lessonIndex === finalIndex) return "active";
       return "locked";
     }
-
-    // ===================
-    // VIDEO / SUMMARY
-    // ===================
-    // Module sebelum dianggap selesai
     if (moduleId < currentModule) {
       return "done";
     }
-
-    // Module sesudah masih terkunci
     if (moduleId > currentModule) {
       return "locked";
     }
@@ -327,162 +315,13 @@ export default function Video() {
 
           {/* SIDEBAR */}
 
-          <aside className="video-sidebar">
-            <div className="mobile-course-nav">
-              <div className="mobile-course-prev">
-                <button>
-                  <svg
-                    width="12"
-                    height="20"
-                    viewBox="0 0 12 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M11.77 1.77L10 0L0 10L10 20L11.77 18.23L3.54 10L11.77 1.77Z"
-                      fill="white"
-                    />
-                  </svg>
-                </button>
-
-                <span>Sebelumnya</span>
-              </div>
-              <div className="mobile-course-next">
-                <span>Setelahnya</span>
-                <button>
-                  <svg
-                    width="12"
-                    height="20"
-                    viewBox="0 0 12 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M0 18.23L1.77 20L11.77 10L1.77 0L0 1.77L8.23 10L0 18.23Z"
-                      fill="white"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <h3 className="module-heading">Daftar Modul</h3>
-            {/* MODULE 1 */}
-            <div className="module">
-              <button
-                className="module-header"
-                onClick={() => toggleModule("intro1")}
-              >
-                <span>Introduction to HR</span>
-
-                <span className={`chevron ${openModules.intro1 ? "open" : ""}`}>
-                  <ChevronDownIcon />
-                </span>
-              </button>
-
-              {openModules.intro1 && (
-                <div className="module-content">
-                  {modules
-                    .find((m) => m.id === 1)
-                    .lessons.map((item, index) => {
-                      const displayStatus = getLessonStatus(item, index, 1);
-
-                      return (
-                        <div
-                          key={index}
-                          className={`lesson ${displayStatus}`}
-                          onClick={() => handleLessonClick(item, index, 1)}
-                        >
-                          <LessonIcon type={item.type} status={displayStatus} />
-
-                          <div className="lesson-info">
-                            <h5>{item.title}</h5>
-                            <span>{item.duration}</span>
-                          </div>
-                        </div>
-                      );
-                    })}
-                </div>
-              )}
-            </div>
-
-            {/* MODULE 3 */}
-            <div className="module">
-              <button
-                className="module-header"
-                onClick={() => toggleModule("intro3")}
-              >
-                <span>Introduction to HR</span>
-
-                <span className={`chevron ${openModules.intro3 ? "open" : ""}`}>
-                  <ChevronDownIcon />
-                </span>
-              </button>
-
-              {openModules.intro3 && (
-                <div className="module-content">
-                  {" "}
-                  {openModules.intro3 && (
-                    <div className="module-content">
-                      {openModules.intro3 && (
-                        <div className="module-content">
-                          {modules
-                            .find((m) => m.id === 2)
-                            .lessons.map((item, index) => {
-                              const displayStatus = getLessonStatus(
-                                item,
-                                index,
-                                2,
-                              );
-
-                              return (
-                                <div
-                                  key={index}
-                                  className={`lesson ${displayStatus}`}
-                                  onClick={() =>
-                                    handleLessonClick(item, index, 2)
-                                  }
-                                >
-                                  <LessonIcon
-                                    type={item.type}
-                                    status={displayStatus}
-                                  />
-
-                                  <div className="lesson-info">
-                                    <h5>{item.title}</h5>
-                                    <span>{item.duration}</span>
-                                  </div>
-                                </div>
-                              );
-                            })}
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-
-            <button className="review-btn">
-              <svg
-                width="19"
-                height="18"
-                viewBox="0 0 19 18"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M9.16148 13.9563L4.01815 16.6605L5.00065 10.933L0.833984 6.87717L6.58398 6.04384L9.15565 0.833008L11.7273 6.04384L17.4773 6.87717L13.3107 10.933L14.2932 16.6605L9.16148 13.9563Z"
-                  stroke="white"
-                  strokeWidth="1.66667"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              Beri Review & Rating
-            </button>
-          </aside>
+          <RulesSidebar
+            ruleType={ruleType}
+            currentModule={state?.moduleId ?? 1}
+            activeLesson={state?.activeLesson ?? -1}
+            course={state?.course}
+            index={state?.index}
+          />
         </div>
 
         {/* BOTTOM */}

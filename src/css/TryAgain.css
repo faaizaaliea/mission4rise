@@ -1,0 +1,284 @@
+.tryagain-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+  background: #fff;
+}
+
+.tryagain-content {
+  flex: 1;
+  min-width: 0;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.tryagain-banner {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.tryagain-body {
+  padding: 40px 48px;
+  display: block;
+}
+
+.tryagain-body h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #222325;
+}
+
+.tryagain-date {
+  margin: 10px 0 24px;
+  font-size: 14px;
+  color: #8a8a8a;
+}
+
+.score-red {
+  background: #ff5c2b;
+}
+.score-box.score-red span,
+.score-box.score-red strong {
+  color: white;
+}
+
+.congrats-body h2 {
+  margin: 0 0 16px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #222325;
+}
+
+.congrats-text {
+  margin: 0 0 12px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #6f6d69;
+}
+
+.congrats-text:last-child {
+  margin-bottom: 0;
+}
+.tryagain-button {
+  background: #fff;
+  color: var(--primary);
+  border: 1.5px solid var(--primary);
+  height: 46px;
+  min-width: 140px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.tryagain-button:hover {
+  background: #f5fff6;
+}
+.tryagain-title {
+  margin-bottom: 20px;
+}
+
+.tryagain-text {
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #6f6d69;
+}
+.mobile-course-nav {
+  display: none;
+}
+@media (max-width: 768px) {
+  .video-navbar {
+    display: none;
+  }
+  .mobile-course-nav {
+    display: flex;
+  }
+  .bottom-nav {
+    display: none !important;
+  }
+  .tryagain-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .tryagain-content {
+    width: 100%;
+    order: 1;
+  }
+
+  .tryagain-banner {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 0;
+  }
+
+  .tryagain-body {
+    padding: 24px 20px 32px;
+  }
+
+  .tryagain-body h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .tryagain-date {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .score-table {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    gap: 0;
+  }
+
+  .score-box {
+    min-width: 0;
+    padding: 16px 12px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .score-box:nth-child(2n) {
+    border-right: none;
+  }
+
+  .score-box:nth-child(n + 3) {
+    border-bottom: none;
+  }
+
+  .score-box span {
+    font-size: 14px;
+  }
+
+  .score-box strong {
+    font-size: 22px;
+  }
+
+  .correct-score,
+  .wrong-score {
+    gap: 6px;
+  }
+
+  .correct-score img,
+  .wrong-score img {
+    width: 18px;
+    height: 18px;
+  }
+  .tryagain-body h2 {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .tryagain-text {
+    font-size: 16px;
+    line-height: 28px;
+  }
+
+  .tryagain-button {
+    width: 100px;
+    min-height: 48px;
+    justify-content: center;
+    margin-top: 24px;
+  }
+
+  .course-sidebar,
+  .rules-sidebar {
+    width: 100%;
+    min-width: 0;
+    position: static;
+    top: auto;
+    height: auto;
+    max-height: none;
+    overflow: visible;
+    border-left: none;
+    order: 2;
+  }
+
+  .module-heading {
+    display: block;
+    margin: 0;
+    padding: 20px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #222;
+    border-bottom: 1px solid #e7e7e7;
+  }
+
+  .module {
+    margin: 0;
+    padding: 20px;
+  }
+
+  .module-header {
+    padding: 12px 0;
+    margin: 0;
+    font-size: 18px;
+  }
+
+  .module-content {
+    margin-top: 12px;
+  }
+
+  .lesson {
+    padding: 16px;
+    margin-bottom: 14px;
+    justify-content: flex-start;
+  }
+
+  .lesson h5 {
+    font-size: 17px;
+  }
+
+  .lesson span {
+    font-size: 14px;
+  }
+
+  .lesson.locked .lesson-icon {
+    filter: grayscale(100%);
+    opacity: 0.6;
+  }
+
+  .lesson.done .lesson-icon,
+  .lesson.active .lesson-icon {
+    filter: none;
+    opacity: 1;
+  }
+
+  .lesson.done .lesson-info h5,
+  .lesson.done .lesson-info span,
+  .lesson.locked .lesson-info h5,
+  .lesson.locked .lesson-info span {
+    color: var(--muted);
+  }
+
+  .lesson.active h5 {
+    color: var(--text);
+  }
+
+  .lesson.active span,
+  .lesson.done span {
+    color: var(--muted);
+  }
+
+  .review-btn {
+    width: 100%;
+    margin: 16px 0 20px;
+    height: 56px;
+    font-size: 18px;
+  }
+}

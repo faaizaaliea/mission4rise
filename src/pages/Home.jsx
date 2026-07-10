@@ -2,9 +2,11 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import CategoryList from "../components/CategoryList";
 import Newsletter from "../components/Newsletter";
-import CourseCard from "../components/CourseCard";
+import CourseCardHome from "../components/CourseCardHome";
 import { courses } from "../data/courses";
 import { Link } from "react-router-dom";
+import "../css/Home.css";
+
 function Home() {
   return (
     <>
@@ -42,7 +44,7 @@ function Home() {
 
           <div className="course-grid">
             {courses.map((course, index) => (
-              <CourseCard key={index} course={course} index={index} />
+              <CourseCardHome key={index} course={course} index={index} />
             ))}
           </div>
         </section>

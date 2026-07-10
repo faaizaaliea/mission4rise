@@ -1,4 +1,6 @@
 import React from "react";
+import "../css/Stepper.css";
+
 const steps = ["Pilih Metode", "Bayar", "Selesai"];
 
 export default function Stepper({ currentStep }) {

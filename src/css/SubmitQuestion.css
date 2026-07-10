@@ -1,0 +1,111 @@
+.submit-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
+}
+
+.submit-modal {
+  width: 100%;
+  max-width: 520px;
+
+  background: #fff;
+  border-radius: 12px;
+
+  padding: 32px;
+
+  height: auto !important;
+  min-height: unset !important;
+
+  display: flex;
+  flex-direction: column;
+
+  text-align: center;
+}
+
+.submit-modal-image {
+  width: 260px;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto 24px;
+}
+
+.submit-modal h2 {
+  margin: 0 0 10px;
+
+  font-size: 24px;
+  font-weight: 700;
+  color: #232323;
+}
+
+.submit-modal p {
+  margin: 0 0 28px;
+
+  font-size: 14px;
+  color: #777;
+  line-height: 1.5;
+}
+
+.submit-modal-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+  min-height: 48px;
+}
+
+.submit-modal-actions button {
+  flex: 1;
+  height: 48px;
+  min-height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.submit-cancel-btn {
+  background: #fff;
+  border: 1px solid #48d65b;
+  color: #48d65b;
+}
+
+.submit-cancel-btn:hover {
+  background: #f5fff6;
+}
+
+.submit-confirm-btn {
+  border: none;
+  background: #48d65b;
+  color: #fff;
+}
+
+.submit-confirm-btn:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .submit-modal {
+    width: calc(100% - 32px);
+    padding: 24px;
+  }
+
+  .submit-modal-image {
+    width: 200px;
+  }
+
+  .submit-modal h2 {
+    font-size: 20px;
+  }
+
+  .submit-modal-actions {
+    flex-direction: column;
+  }
+}

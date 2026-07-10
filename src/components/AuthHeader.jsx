@@ -1,3 +1,5 @@
+import "../css/AuthHeader.css";
+
 function AuthHeader() {
   return (
     <header className="site-header">

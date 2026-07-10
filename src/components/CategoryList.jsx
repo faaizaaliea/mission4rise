@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import "../css/CategoryList.css";
+
 function CategoryList() {
   return (
     <div className="category-list">

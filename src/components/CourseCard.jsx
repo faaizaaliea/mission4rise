@@ -1,18 +1,24 @@
 import { Link } from "react-router-dom";
+import "../css/CourseCard.css";
+
 function CourseCard({ course, index }) {
   return (
     <Link
       to={`/course/${course.id}`}
       state={{ course, index }}
-      className="course-card-link"
+      className="cc-course-card-link"
     >
-      <article className="course-card">
-        <img className="course-image" src={course.image} alt={course.title} />
+      <article className="cc-course-card">
+        <img
+          className="cc-course-image"
+          src={course.image}
+          alt={course.title}
+        />
 
-        <div className="course-body">
-          <h3 className="course-title">{course.title}</h3>
+        <div className="cc-course-body">
+          <h3 className="cc-course-title">{course.title}</h3>
 
-          <p className="course-description">
+          <p className="cc-course-description">
             Mulai transformasi dengan instruktur profesional, harga yang
             terjangkau, dan materi mendalam.
           </p>
@@ -28,19 +34,19 @@ function CourseCard({ course, index }) {
             </div>
           </div>
 
-          <div className="rating-price">
-            <span className="rating">
+          <div className="cc-rating-price">
+            <span className="cc-rating">
               <b>★★★</b>
               <em>★★</em>
               <a href="#">3.5 (86)</a>
             </span>
 
-            <div className="price">
+            <div className="cc-price">
               {course.originalPrice && (
-                <span className="old-price">{course.originalPrice}</span>
+                <span className="cc-old-price">{course.originalPrice}</span>
               )}
 
-              <span className="new-price">{course.price}</span>
+              <span className="cc-new-price">{course.price}</span>
             </div>
           </div>
         </div>

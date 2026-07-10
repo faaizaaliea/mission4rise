@@ -1,8 +1,10 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import CourseCard from "../components/CourseCard";
+import CourseCardHome from "../components/CourseCardHome";
 import { courses } from "../data/courses";
 import { useEffect, useRef, useState } from "react";
+import "../css/AllProduct.css";
+
 function AllProduct() {
   const [openFilter, setOpenFilter] = useState({
     bidang: true,
@@ -350,7 +352,7 @@ function AllProduct() {
 
               <div className="product-grid">
                 {currentCourses.map((course, index) => (
-                  <CourseCard
+                  <CourseCardHome
                     key={course.id || index}
                     course={course}
                     index={index}
@@ -360,6 +362,7 @@ function AllProduct() {
 
               <div className="pagination">
                 <button
+                  className="pagination-arrow"
                   disabled={currentPage === 1}
                   onClick={() => setCurrentPage(currentPage - 1)}
                 >
@@ -388,6 +391,7 @@ function AllProduct() {
                 ))}
 
                 <button
+                  className="pagination-arrow"
                   disabled={currentPage === totalPages}
                   onClick={() => setCurrentPage(currentPage + 1)}
                 >

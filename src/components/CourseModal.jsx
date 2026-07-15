@@ -110,30 +110,13 @@ function CourseModal({
     "/8.jpg",
     "/9.jpg",
   ];
-  const handleSubmitCourse = (data) => {
-    if (modalMode === "add") {
-      setCourseList([
-        ...courseList,
-        {
-          ...data,
-          rating: null,
-          totalReviews: 0,
-        },
-      ]);
-    } else {
-      setCourseList(
-        courseList.map((course) =>
-          course.id === data.id
-            ? {
-                ...course,
-                ...data,
-              }
-            : course,
-        ),
-      );
-    }
-
-    setIsModalOpen(false);
+  const handleImageDropdown = () => {
+    setImageDropdownOpen((prev) => !prev);
+    setInstructorDropdownOpen(false);
+  };
+  const handleInstructorDropdown = () => {
+    setInstructorDropdownOpen((prev) => !prev);
+    setImageDropdownOpen(false);
   };
 
   return (
@@ -165,7 +148,7 @@ function CourseModal({
             <button
               type="button"
               className="instructor-header"
-              onClick={() => setInstructorDropdownOpen(!instructorDropdownOpen)}
+              onClick={handleInstructorDropdown}
             >
               <span>{formData.instructor || "Pilih Instructor"}</span>
 
@@ -204,7 +187,7 @@ function CourseModal({
             <button
               type="button"
               className="course-image-header"
-              onClick={() => setImageDropdownOpen(!imageDropdownOpen)}
+              onClick={handleImageDropdown}
             >
               <span>{formData.image || "Pilih Gambar Course"}</span>
 

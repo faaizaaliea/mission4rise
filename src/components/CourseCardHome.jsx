@@ -2,6 +2,25 @@ import { Link } from "react-router-dom";
 import "../css/CourseCardHome.css";
 
 function CourseCard({ course, index }) {
+  const renderStars = (rating) => {
+    if (rating == null) {
+      return (
+        <>
+          <em>☆☆☆☆☆</em>
+        </>
+      );
+    }
+
+    const fullStars = Math.floor(rating);
+    const emptyStars = 5 - fullStars;
+
+    return (
+      <>
+        <b>{"★".repeat(fullStars)}</b>
+        <em>{"☆".repeat(emptyStars)}</em>
+      </>
+    );
+  };
   return (
     <Link
       to={`/course/${course.id}`}
@@ -18,10 +37,7 @@ function CourseCard({ course, index }) {
         <div className="home-course-body">
           <h3 className="home-course-title">{course.title}</h3>
 
-          <p className="home-course-description">
-            Mulai transformasi dengan instruktur profesional, harga yang
-            terjangkau, dan materi mendalam.
-          </p>
+          <p className="home-course-description">{course.description}</p>
 
           <div className="instructor">
             <span
@@ -29,16 +45,20 @@ function CourseCard({ course, index }) {
             ></span>
 
             <div className="instructor-info">
-              <strong>Jenna Ortega</strong>
-              <small>Senior Accountant di Gojek</small>
+              <strong>{course.instructor}</strong>
+              <small>{course.instructorRole}</small>
             </div>
           </div>
 
           <div className="rating-price">
             <span className="rating">
-              <b>★★★</b>
-              <em>★★</em>
-              <a href="#">3.5 (86)</a>
+              <span className="stars">{renderStars(course.rating)}</span>
+
+              <a href="#">
+                {course.rating == null
+                  ? "Belum ada ulasan"
+                  : `${course.rating} (${course.totalReviews})`}
+              </a>
             </span>
 
             <div className="price">

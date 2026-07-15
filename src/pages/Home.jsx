@@ -3,11 +3,43 @@ import Footer from "../components/Footer";
 import CategoryList from "../components/CategoryList";
 import Newsletter from "../components/Newsletter";
 import CourseCardHome from "../components/CourseCardHome";
-import { courses } from "../data/courses";
+import CourseModal from "../components/CourseModal";
+import { courses as initialCourses } from "../data/courses";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import "../css/Home.css";
 
 function Home() {
+  const [courseList, setCourseList] = useState(initialCourses);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [modalMode, setModalMode] = useState("add");
+  const openAddModal = () => {
+    setModalMode("add");
+    setSelectedCourse(null);
+    setIsModalOpen(true);
+  };
+
+  const openEditModal = (course) => {
+    setModalMode("edit");
+    setSelectedCourse(course);
+    setIsModalOpen(true);
+  };
+  const handleSubmitCourse = (data) => {
+    if (modalMode === "add") {
+      setCourseList([...courseList, data]);
+    } else {
+      setCourseList(
+        courseList.map((course) => (course.id === data.id ? data : course)),
+      );
+    }
+
+    setIsModalOpen(false);
+  };
+  const handleDeleteCourse = (id) => {
+    setCourseList(courseList.filter((course) => course.id !== id));
+  };
+
   return (
     <>
       <Navbar />
@@ -41,10 +73,22 @@ function Home() {
           </p>
 
           <CategoryList />
-
+          <div className="crud-demo">
+            <button onClick={openAddModal}>Tambah Data</button>{" "}
+          </div>
           <div className="course-grid">
-            {courses.map((course, index) => (
-              <CourseCardHome key={index} course={course} index={index} />
+            {courseList.map((course, index) => (
+              <div key={course.id}>
+                <CourseCardHome course={course} index={index} />
+
+                <div className="crud-actions">
+                  <button onClick={() => openEditModal(course)}>Update</button>
+
+                  <button onClick={() => handleDeleteCourse(course.id)}>
+                    Delete
+                  </button>
+                </div>
+              </div>
             ))}
           </div>
         </section>
@@ -53,6 +97,13 @@ function Home() {
       </main>
 
       <Footer />
+      <CourseModal
+        isOpen={isModalOpen}
+        mode={modalMode}
+        course={selectedCourse}
+        onClose={() => setIsModalOpen(false)}
+        onSubmit={handleSubmitCourse}
+      />
     </>
   );
 }

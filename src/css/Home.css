@@ -81,8 +81,9 @@
   display: flex;
   align-items: flex-start;
   gap: 29px;
-  height: 47px;
-  margin-top: 34px;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  height: auto;
 }
 
 .course-grid {
@@ -91,6 +92,70 @@
   gap: 18px;
 }
 
+.crud-demo {
+  display: flex;
+  justify-content: flex-end;
+  margin: 8px 0 20px;
+}
+
+.crud-demo button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.crud-demo button:hover,
+.crud-actions button:hover {
+  opacity: 0.9;
+}
+
+.course-grid > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.crud-actions {
+  display: flex;
+  margin-top: 10px;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.crud-actions button {
+  width: 25%;
+  min-width: 90px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  flex: none;
+}
+
+.crud-actions button {
+  opacity: 0.9;
+}
+
+.crud-actions button:first-child {
+  background: #ffbd3a;
+  color: #fff;
+}
+
+.crud-actions button:last-child {
+  background: #ff5a5a;
+  color: #fff;
+}
+
+.crud-actions button:hover {
+  opacity: 0.9;
+}
 .offer {
   font-weight: 500;
   font-size: 14px;
@@ -286,6 +351,15 @@
   }
 
   .newsletter-form button {
+    font-size: 11px;
+  }
+  .crud-demo button {
+    margin-top: 10px;
+  }
+  .crud-actions button,
+  .crud-demo button {
+    height: 24px;
+    padding: 0 8px;
     font-size: 11px;
   }
 }

@@ -1,0 +1,252 @@
+.course-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 9999;
+  overflow-y: auto;
+  padding: 40px 16px;
+}
+
+.course-modal {
+  width: min(520px, calc(100% - 32px));
+  margin: auto;
+
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 16px;
+  padding: 32px;
+
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.course-modal h2 {
+  margin: 0;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.course-form {
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  gap: 12px;
+}
+
+.course-form input {
+  width: 100%;
+  height: 48px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 0 14px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.course-form input:focus {
+  border-color: #3ecf4c;
+}
+
+.course-form textarea {
+  min-height: 50px;
+  resize: vertical;
+
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+
+  padding: 12px 14px;
+
+  font-size: 14px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.course-form textarea:focus {
+  border-color: #3ecf4c;
+  outline: none;
+}
+
+.course-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.course-cancel-btn {
+  min-width: 120px;
+  height: 42px;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  border: 1px solid #48d65b;
+  color: #48d65b;
+}
+
+.course-save-btn {
+  min-width: 120px;
+  height: 42px;
+  border: none;
+  border-radius: 8px;
+  background: #3ecf4c;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.course-cancel-btn:hover {
+  background: #f5fff6;
+}
+.course-save-btn:hover {
+  opacity: 0.9;
+}
+
+.instructor-selector,
+.course-image-selector {
+  position: relative;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+}
+
+.instructor-header,
+.course-image-header {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+
+  border: none;
+  background: #fff;
+  border-radius: 8px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #6f6d69;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.instructor-options,
+.course-image-options-grid {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+  max-height: min(260px, calc(90vh - 260px));
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #d9d9d9 transparent;
+
+  z-index: 100;
+}
+
+.instructor-options::-webkit-scrollbar,
+.course-image-options-grid::-webkit-scrollbar {
+  width: 6px;
+}
+
+.instructor-options::-webkit-scrollbar-thumb,
+.course-image-options-grid::-webkit-scrollbar-thumb {
+  background: #d9d9d9;
+  border-radius: 3px;
+}
+
+.instructor-options::-webkit-scrollbar-track,
+.course-image-options-grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.course-image-options-grid {
+  padding: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  align-content: start;
+}
+
+.course-image-card {
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  overflow: hidden;
+
+  background: #fff;
+  cursor: pointer;
+}
+
+.course-image-card img {
+  width: 100%;
+  height: 70px;
+  display: block;
+  object-fit: cover;
+
+  transition: 0.2s;
+}
+
+.course-image-card:hover {
+  border-color: #bfe8c4;
+  filter: grayscale(30%);
+  opacity: 0.85;
+}
+
+.course-image-card.active {
+  border-color: #3ecf4c;
+  filter: grayscale(60%);
+  opacity: 0.7;
+}
+
+.instructor-option {
+  width: 100%;
+  padding: 12px 14px;
+  border: none;
+  background: #fff;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  text-align: left;
+  cursor: pointer;
+}
+
+.instructor-option:hover {
+  background: #f8fff9;
+}
+
+.instructor-option img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.instructor-option div {
+  display: flex;
+  flex-direction: column;
+}
+
+.instructor-option strong {
+  font-size: 14px;
+  color: #222325;
+}
+
+.instructor-option span {
+  font-size: 12px;
+  color: #6f6d69;
+}

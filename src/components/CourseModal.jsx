@@ -87,6 +87,7 @@ function CourseModal({
         image: "",
         price: "",
         originalPrice: "",
+        ...course,
       });
     }
   }, [course]);
@@ -125,12 +126,7 @@ function CourseModal({
         <h2>{mode === "add" ? "Tambah Course" : "Update Course"}</h2>
 
         <div className="course-form">
-          <input
-            name="id"
-            placeholder="ID"
-            value={formData.id}
-            onChange={handleChange}
-          />
+          <input name="id" value={formData.id} readOnly />
 
           <input
             name="title"

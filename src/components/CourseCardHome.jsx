@@ -54,11 +54,11 @@ function CourseCard({ course, index }) {
             <span className="rating">
               <span className="stars">{renderStars(course.rating)}</span>
 
-              <a href="#">
+              <span className="rating-count">
                 {course.rating == null
                   ? "Belum ada ulasan"
                   : `${course.rating} (${course.totalReviews})`}
-              </a>
+              </span>
             </span>
 
             <div className="price">

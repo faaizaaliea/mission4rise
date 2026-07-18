@@ -38,7 +38,7 @@ function CourseCard({ course, index }) {
             <span className="cc-rating">
               <b>★★★</b>
               <em>★★</em>
-              <a href="#">3.5 (86)</a>
+              <span className="rating-count">3.5 (86)</span>
             </span>
 
             <div className="cc-price">

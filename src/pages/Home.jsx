@@ -4,16 +4,33 @@ import CategoryList from "../components/CategoryList";
 import Newsletter from "../components/Newsletter";
 import CourseCardHome from "../components/CourseCardHome";
 import CourseModal from "../components/CourseModal";
-import { courses as initialCourses } from "../data/courses";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import {
+  getCourses,
+  addCourse,
+  updateCourse,
+  deleteCourse,
+} from "../services/api/courseService";
 import "../css/Home.css";
 
 function Home() {
-  const [courseList, setCourseList] = useState(initialCourses);
+  const [courseList, setCourseList] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [modalMode, setModalMode] = useState("add");
+  useEffect(() => {
+    fetchCourses();
+  }, []);
+
+  const fetchCourses = async () => {
+    try {
+      const data = await getCourses();
+      setCourseList(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const openAddModal = () => {
     setModalMode("add");
     setSelectedCourse(null);
@@ -21,23 +38,39 @@ function Home() {
   };
 
   const openEditModal = (course) => {
+    console.log(course);
+
     setModalMode("edit");
     setSelectedCourse(course);
     setIsModalOpen(true);
   };
-  const handleSubmitCourse = (data) => {
-    if (modalMode === "add") {
-      setCourseList([...courseList, data]);
-    } else {
-      setCourseList(
-        courseList.map((course) => (course.id === data.id ? data : course)),
-      );
-    }
+  const handleSubmitCourse = async (data) => {
+    console.log(data);
+    try {
+      if (modalMode === "add") {
+        await addCourse({
+          ...data,
+          rating: 0,
+          totalReviews: 0,
+        });
+      } else {
+        await updateCourse(data.id, data);
+      }
 
-    setIsModalOpen(false);
+      fetchCourses();
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error(error);
+    }
   };
-  const handleDeleteCourse = (id) => {
-    setCourseList(courseList.filter((course) => course.id !== id));
+  const handleDeleteCourse = async (id) => {
+    console.log(id);
+    try {
+      await deleteCourse(id);
+      fetchCourses();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

@@ -6,31 +6,27 @@ import CourseCardHome from "../components/CourseCardHome";
 import CourseModal from "../components/CourseModal";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
-  getCourses,
-  addCourse,
-  updateCourse,
-  deleteCourse,
-} from "../services/api/courseService";
+  fetchCourses,
+  createCourse,
+  editCourse,
+  removeCourse,
+} from "../store/redux/courseSlice";
 import "../css/Home.css";
 
 function Home() {
-  const [courseList, setCourseList] = useState([]);
+  const dispatch = useDispatch();
+  const courseList = useSelector((state) => state.courses.list);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [modalMode, setModalMode] = useState("add");
-  useEffect(() => {
-    fetchCourses();
-  }, []);
 
-  const fetchCourses = async () => {
-    try {
-      const data = await getCourses();
-      setCourseList(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  useEffect(() => {
+    dispatch(fetchCourses());
+  }, [dispatch]);
+
   const openAddModal = () => {
     setModalMode("add");
     setSelectedCourse(null);
@@ -38,36 +34,29 @@ function Home() {
   };
 
   const openEditModal = (course) => {
-    console.log(course);
-
     setModalMode("edit");
     setSelectedCourse(course);
     setIsModalOpen(true);
   };
+
   const handleSubmitCourse = async (data) => {
-    console.log(data);
     try {
       if (modalMode === "add") {
-        await addCourse({
-          ...data,
-          rating: 0,
-          totalReviews: 0,
-        });
+        await dispatch(
+          createCourse({ ...data, rating: 0, totalReviews: 0 }),
+        ).unwrap();
       } else {
-        await updateCourse(data.id, data);
+        await dispatch(editCourse({ id: data.id, courseData: data })).unwrap();
       }
-
-      fetchCourses();
       setIsModalOpen(false);
     } catch (error) {
       console.error(error);
     }
   };
+
   const handleDeleteCourse = async (id) => {
-    console.log(id);
     try {
-      await deleteCourse(id);
-      fetchCourses();
+      await dispatch(removeCourse(id)).unwrap();
     } catch (error) {
       console.error(error);
     }
@@ -76,7 +65,6 @@ function Home() {
   return (
     <>
       <Navbar />
-
       <main>
         <section className="hero container">
           <div className="overlay">
@@ -84,14 +72,12 @@ function Home() {
               Revolusi Pembelajaran: Temukan Ilmu Baru melalui Platform Video
               Interaktif!
             </h1>
-
             <p>
               Temukan ilmu baru yang menarik dan mendalam melalui koleksi video
               pembelajaran berkualitas tinggi. Tidak hanya itu, Anda juga dapat
               berpartisipasi dalam latihan interaktif yang akan meningkatkan
               pemahaman Anda.
             </p>
-
             <Link to="/all-product" className="hero-button">
               Temukan Video Course untuk Dipelajari!
             </Link>
@@ -100,23 +86,20 @@ function Home() {
 
         <section className="container courses">
           <h2>Koleksi Video Pembelajaran Unggulan</h2>
-
           <p className="subtitle">
             Jelajahi Dunia Pengetahuan Melalui Pilihan Kami!
           </p>
 
           <CategoryList />
           <div className="crud-demo">
-            <button onClick={openAddModal}>Tambah Data</button>{" "}
+            <button onClick={openAddModal}>Tambah Data</button>
           </div>
           <div className="course-grid">
             {courseList.map((course, index) => (
               <div key={course.id}>
                 <CourseCardHome course={course} index={index} />
-
                 <div className="crud-actions">
                   <button onClick={() => openEditModal(course)}>Update</button>
-
                   <button onClick={() => handleDeleteCourse(course.id)}>
                     Delete
                   </button>

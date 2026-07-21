@@ -413,6 +413,7 @@
   }
 
   .xxorder-order-tabs button {
+    margin-top: 10px;
     background: none;
     border: none;
     white-space: nowrap;
@@ -424,7 +425,6 @@
   }
 
   .xxorder-order-tabs button.xxorder-active {
-    color: #ff5b4d;
     font-weight: 600;
   }
 
@@ -435,7 +435,6 @@
     bottom: -13px;
     width: 40px;
     height: 3px;
-    background: #ff5b4d;
     border-radius: 999px;
   }
 

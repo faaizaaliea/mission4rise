@@ -110,6 +110,8 @@ function CourseModal({
     "/7.jpg",
     "/8.jpg",
     "/9.jpg",
+    "/10.jpg",
+    "/11.jpg",
   ];
   const handleImageDropdown = () => {
     setImageDropdownOpen((prev) => !prev);
@@ -126,108 +128,133 @@ function CourseModal({
         <h2>{mode === "add" ? "Tambah Course" : "Update Course"}</h2>
 
         <div className="course-form">
-          <input name="id" value={formData.id} readOnly />
-
-          <input
-            name="title"
-            placeholder="Nama Course"
-            value={formData.title}
-            onChange={handleChange}
-          />
-          <textarea
-            name="description"
-            placeholder="Deskripsi Course"
-            value={formData.description}
-            onChange={handleChange}
-          />
-          <div className="instructor-selector">
-            <button
-              type="button"
-              className="instructor-header"
-              onClick={handleInstructorDropdown}
-            >
-              <span>{formData.instructor || "Pilih Instructor"}</span>
-
-              {instructorDropdownOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
-            </button>
-
-            {instructorDropdownOpen && (
-              <div className="instructor-options">
-                {instructorOptions.map((instructor) => (
-                  <button
-                    key={instructor.id}
-                    type="button"
-                    className="instructor-option"
-                    onClick={() => {
-                      setFormData({
-                        ...formData,
-                        instructor: instructor.name,
-                      });
-
-                      setInstructorDropdownOpen(false);
-                    }}
-                  >
-                    <img src={instructor.image} alt={instructor.name} />
-
-                    <div>
-                      <strong>{instructor.name}</strong>
-                      <span>{instructor.role}</span>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            )}
+          <div className="course-input-wrapper">
+            <label>ID</label>
+            <input name="id" value={formData.id} readOnly />
           </div>
 
-          <div className="course-image-selector">
-            <button
-              type="button"
-              className="course-image-header"
-              onClick={handleImageDropdown}
-            >
-              <span>{formData.image || "Pilih Gambar Course"}</span>
-
-              {imageDropdownOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
-            </button>
-
-            {imageDropdownOpen && (
-              <div className="course-image-options-grid">
-                {imageOptions.map((image) => (
-                  <button
-                    key={image}
-                    type="button"
-                    className={`course-image-card ${
-                      formData.image === image ? "active" : ""
-                    }`}
-                    onClick={() => {
-                      setFormData({
-                        ...formData,
-                        image,
-                      });
-
-                      setImageDropdownOpen(false);
-                    }}
-                  >
-                    <img src={image} alt="" />
-                  </button>
-                ))}
-              </div>
-            )}
+          <div className="course-input-wrapper">
+            <label>Nama Course</label>
+            <input
+              name="title"
+              placeholder=""
+              value={formData.title}
+              onChange={handleChange}
+            />
           </div>
 
-          <input
-            name="price"
-            placeholder="Harga"
-            value={formData.price}
-            onChange={handleChange}
-          />
+          <div className="course-input-wrapper">
+            <label>Deskripsi Course</label>
+            <textarea
+              name="description"
+              placeholder=""
+              value={formData.description}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="course-input-wrapper">
+            <label>Instructor</label>
+            <div className="instructor-selector">
+              <button
+                type="button"
+                className="instructor-header"
+                onClick={handleInstructorDropdown}
+              >
+                <span>{formData.instructor || ""}</span>
 
-          <input
-            name="originalPrice"
-            placeholder="Harga Asli"
-            value={formData.originalPrice}
-            onChange={handleChange}
-          />
+                {instructorDropdownOpen ? (
+                  <ChevronUpIcon />
+                ) : (
+                  <ChevronDownIcon />
+                )}
+              </button>
+
+              {instructorDropdownOpen && (
+                <div className="instructor-options">
+                  {instructorOptions.map((instructor) => (
+                    <button
+                      key={instructor.id}
+                      type="button"
+                      className="instructor-option"
+                      onClick={() => {
+                        setFormData({
+                          ...formData,
+                          instructor: instructor.name,
+                        });
+
+                        setInstructorDropdownOpen(false);
+                      }}
+                    >
+                      <img src={instructor.image} alt={instructor.name} />
+
+                      <div>
+                        <strong>{instructor.name}</strong>
+                        <span>{instructor.role}</span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="course-input-wrapper">
+            <label>Course Image</label>
+            <div className="course-image-selector">
+              <button
+                type="button"
+                className="course-image-header"
+                onClick={handleImageDropdown}
+              >
+                <span>{formData.image || ""}</span>
+
+                {imageDropdownOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
+              </button>
+
+              {imageDropdownOpen && (
+                <div className="course-image-options-grid">
+                  {imageOptions.map((image) => (
+                    <button
+                      key={image}
+                      type="button"
+                      className={`course-image-card ${
+                        formData.image === image ? "active" : ""
+                      }`}
+                      onClick={() => {
+                        setFormData({
+                          ...formData,
+                          image,
+                        });
+
+                        setImageDropdownOpen(false);
+                      }}
+                    >
+                      <img src={image} alt="" />
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="course-input-wrapper">
+            <label>Harga</label>
+            <input
+              name="price"
+              placeholder=""
+              value={formData.price}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="course-input-wrapper">
+            <label>Harga Asli</label>
+            <input
+              name="originalPrice"
+              placeholder=""
+              value={formData.originalPrice}
+              onChange={handleChange}
+            />
+          </div>
         </div>
 
         <div className="course-modal-actions">

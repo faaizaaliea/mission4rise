@@ -1,6 +1,4 @@
 import api from "./axios";
-
-// normalize MongoDB's _id into id so the rest of the app can just use course.id
 const normalize = (course) => ({
   ...course,
   id: course.id ?? course._id,

@@ -270,7 +270,9 @@
     margin-top: 0;
     font-size: 13px;
   }
-
+  .crud-demo button {
+    margin-top: 10px;
+  }
   .courses {
     margin-top: 20px;
   }

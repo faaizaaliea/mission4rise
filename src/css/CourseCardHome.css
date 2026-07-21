@@ -26,7 +26,7 @@
 }
 
 .course-title {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   color: var(--text);
   font-size: 14px;
   line-height: 1.25;
@@ -42,6 +42,7 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  margin-top: 5px;
 }
 
 .instructor {
@@ -288,7 +289,8 @@
   }
 
   .home-course-card .rating .rating-count {
-    font-size: 12px;
+    font-size: 10px;
+    margin-left: -5px;
   }
 
   .home-course-card .price {
@@ -306,6 +308,7 @@
     align-self: center;
     margin: 0;
     text-align: center;
+    margin-left: -15px;
   }
 
   .home-course-card .new-price {

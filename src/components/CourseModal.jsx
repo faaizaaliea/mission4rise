@@ -240,6 +240,7 @@ function CourseModal({
             <label>Harga</label>
             <input
               name="price"
+              autoComplete="off"
               placeholder=""
               value={formData.price}
               onChange={handleChange}
@@ -250,6 +251,7 @@ function CourseModal({
             <label>Harga Asli</label>
             <input
               name="originalPrice"
+              autoComplete="off"
               placeholder=""
               value={formData.originalPrice}
               onChange={handleChange}

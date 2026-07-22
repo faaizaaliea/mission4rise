@@ -105,6 +105,15 @@
   box-shadow: 0 0 0 2px rgba(53, 200, 74, 0.12);
 }
 
+.course-form input:-webkit-autofill,
+.course-form input:-webkit-autofill:hover,
+.course-form input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+  box-shadow: 0 0 0px 1000px #fff inset;
+  -webkit-text-fill-color: #222325;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 .course-form textarea {
   width: 100%;
   min-height: 50px;

@@ -13,6 +13,7 @@ function Newsletter() {
 
         <form className="newsletter-form">
           <input
+            name="email"
             type="email"
             autoComplete="off"
             placeholder="Masukkan Emailmu"

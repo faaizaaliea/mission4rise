@@ -96,7 +96,7 @@ function Home() {
           </div>
           <div className="course-grid">
             {courseList.map((course, index) => (
-              <div key={course.id}>
+              <div key={course.id} className="course-grid-item">
                 <CourseCardHome course={course} index={index} />
                 <div className="crud-actions">
                   <button onClick={() => openEditModal(course)}>Update</button>

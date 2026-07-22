@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import "../css/CourseCardHome.css";
-
+function truncateText(text, maxLength = 80) {
+  if (!text) return "";
+  if (text.length <= maxLength) return text;
+  return text.slice(0, maxLength).trim() + "...";
+}
 function CourseCard({ course, index }) {
   const renderStars = (rating) => {
     if (rating == null) {
@@ -37,8 +41,9 @@ function CourseCard({ course, index }) {
         <div className="home-course-body">
           <h3 className="home-course-title">{course.title}</h3>
 
-          <p className="home-course-description">{course.description}</p>
-
+          <p className="home-course-description">
+            {truncateText(course.description, 110)}
+          </p>
           <div className="instructor">
             <span
               className={`instructor-avatar avatar-${(index % 3) + 1}`}

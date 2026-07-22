@@ -150,7 +150,18 @@ function CourseModal({
               placeholder=""
               value={formData.description}
               onChange={handleChange}
+              maxLength={100}
             />
+            <span
+              className="char-counter"
+              style={
+                formData.description.length >= 100
+                  ? { color: "#f64920" }
+                  : undefined
+              }
+            >
+              {formData.description.length}/100
+            </span>
           </div>
           <div className="course-input-wrapper">
             <label>Instructor</label>
@@ -160,7 +171,11 @@ function CourseModal({
                 className="instructor-header"
                 onClick={handleInstructorDropdown}
               >
-                <span>{formData.instructor || ""}</span>
+                <span>
+                  {formData.instructor
+                    ? `${formData.instructor}${formData.instructorRole ? " — " + formData.instructorRole : ""}`
+                    : ""}
+                </span>
 
                 {instructorDropdownOpen ? (
                   <ChevronUpIcon />
@@ -180,8 +195,8 @@ function CourseModal({
                         setFormData({
                           ...formData,
                           instructor: instructor.name,
+                          instructorRole: instructor.role,
                         });
-
                         setInstructorDropdownOpen(false);
                       }}
                     >

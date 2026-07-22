@@ -14,6 +14,7 @@ function Newsletter() {
         <form className="newsletter-form">
           <input
             type="email"
+            autoComplete="off"
             placeholder="Masukkan Emailmu"
             aria-label="Masukkan Emailmu"
           />
